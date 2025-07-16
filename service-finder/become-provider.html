@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Become a Provider - NUL Student Marketplace</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script type="module" src="/firebase-config.js"></script>
+  </head>
+  <body>
+    <!-- Standard header -->
+    <header>
+      <div class="container">
+        <div class="logo">
+          <a href="dashboard.html">Service Finder</a>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="orders.html">My Orders</a></li>
+            <li><a href="messages.html">Messages</a></li>
+          </ul>
+        </nav>
+        <div class="search-container">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search services..." />
+          </div>
+        </div>
+        <div class="user-actions">
+          <a href="cart.html" class="cart-icon"
+            ><i class="fas fa-shopping-cart"></i
+          ></a>
+          <a href="#" class="theme-toggle" aria-label="Toggle theme"
+            ><i class="fas fa-moon"></i
+          ></a>
+          <div class="user-menu">
+            <div class="user-avatar">
+              <img
+                src="avatar1.jpg"
+                alt="User Avatar"
+              />
+            </div>
+            <span class="username">John Doe</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="provider-form-section">
+        <div class="container">
+          <div class="form-container">
+            <h1>Become a Service Provider</h1>
+            <p class="form-intro">
+              Share your skills with the NUL community! Complete the form below
+              to register as a service provider.
+            </p>
+
+            <form id="provider-application">
+              <!-- Service Details -->
+              <div class="form-section">
+                <h2>Service Information</h2>
+                <div class="form-group">
+                  <label for="service-title">Service Title</label>
+                  <input
+                    type="text"
+                    id="service-title"
+                    required
+                    placeholder="E.g., Math Tutoring, Laundry Service"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="service-category">Category</label>
+                  <select id="service-category" required>
+                    <option value="" disabled selected>
+                      Select a category
+                    </option>
+                    <option value="tutoring">Tutoring & Academic Help</option>
+                    <option value="food">Food & Beverages</option>
+                    <option value="laundry">Laundry & Cleaning</option>
+                    <option value="tech">Tech Support</option>
+                    <option value="beauty">Beauty & Wellness</option>
+                    <option value="errands">Errands & Delivery</option>
+                    <option value="arts">Arts & Creative Services</option>
+                    <option value="events">Event Planning</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="service-description">Description</label>
+                  <textarea
+                    id="service-description"
+                    rows="4"
+                    required
+                    placeholder="Describe your service in detail"
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="service-price">Price (in Maloti)</label>
+                  <div class="price-inputs">
+                    <input
+                      type="number"
+                      id="service-price"
+                      required
+                      min="0"
+                      placeholder="Amount"
+                    />
+                    <select id="price-unit">
+                      <option value="fixed">Fixed Price</option>
+                      <option value="hourly">Per Hour</option>
+                      <option value="session">Per Session</option>
+                      <option value="item">Per Item</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="service-images">Service Images</label>
+                  <input
+                    type="file"
+                    id="service-images"
+                    multiple
+                    accept="image/*"
+                  />
+                  <p class="help-text">Upload up to 5 images (Max 2MB each)</p>
+                </div>
+              </div>
+
+              <!-- Availability -->
+              <div class="form-section">
+                <h2>Availability</h2>
+                <p class="section-intro">
+                  Let customers know when you're available to provide your
+                  service.
+                </p>
+
+                <div class="days-grid">
+                  <div class="day-column">
+                    <label class="day-checkbox">
+                      <input type="checkbox" name="days" value="monday" />
+                      <span>Monday</span>
+                    </label>
+                    <div class="time-slots">
+                      <select class="time-from">
+                        <option value="8:00">8:00 AM</option>
+                        <option value="9:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="18:00">6:00 PM</option>
+                      </select>
+                      <span>to</span>
+                      <select class="time-to">
+                        <option value="9:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="18:00">6:00 PM</option>
+                        <option value="19:00">7:00 PM</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="day-column">
+                    <label class="day-checkbox">
+                      <input type="checkbox" name="days" value="tuesday" />
+                      <span>Tuesday</span>
+                    </label>
+                    <div class="time-slots">
+                      <select class="time-from">
+                        <option value="8:00">8:00 AM</option>
+                        <option value="9:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="18:00">6:00 PM</option>
+                      </select>
+                      <span>to</span>
+                      <select class="time-to">
+                        <option value="9:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="18:00">6:00 PM</option>
+                        <option value="19:00">7:00 PM</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="day-column">
+                    <label class="day-checkbox">
+                      <input type="checkbox" name="days" value="wednesday" />
+                      <span>Wednesday</span>
+                    </label>
+                    <div class="time-slots">
+                      <select class="time-from">
+                        <option value="8:00">8:00 AM</option>
+                        <option value="9:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="18:00">6:00 PM</option>
+                      </select>
+                      <span>to</span>
+                      <select class="time-to">
+                        <option value="9:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="18:00">6:00 PM</option>
+                        <option value="19:00">7:00 PM</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="day-column">
+                    <label class="day-checkbox">
+                      <input type="checkbox" name="days" value="thursday" />
+                      <span>Thursday</span>
+                    </label>
+                    <div class="time-slots">
+                      <select class="time-from">
+                        <option value="8:00">8:00 AM</option>
+                        <option value="9:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="18:00">6:00 PM</option>
+                      </select>
+                      <span>to</span>
+                      <select class="time-to">
+                        <option value="9:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="18:00">6:00 PM</option>
+                        <option value="19:00">7:00 PM</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="day-column">
+                    <label class="day-checkbox">
+                      <input type="checkbox" name="days" value="friday" />
+                      <span>Friday</span>
+                    </label>
+                    <div class="time-slots">
+                      <select class="time-from">
+                        <option value="8:00">8:00 AM</option>
+                        <option value="9:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="18:00">6:00 PM</option>
+                      </select>
+                      <span>to</span>
+                      <select class="time-to">
+                        <option value="9:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="18:00">6:00 PM</option>
+                        <option value="19:00">7:00 PM</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="day-column weekend">
+                    <label class="day-checkbox">
+                      <input type="checkbox" name="days" value="saturday" />
+                      <span>Saturday</span>
+                    </label>
+                    <div class="time-slots">
+                      <select class="time-from">
+                        <option value="8:00">8:00 AM</option>
+                        <option value="9:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="18:00">6:00 PM</option>
+                      </select>
+                      <span>to</span>
+                      <select class="time-to">
+                        <option value="9:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="18:00">6:00 PM</option>
+                        <option value="19:00">7:00 PM</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="day-column weekend">
+                    <label class="day-checkbox">
+                      <input type="checkbox" name="days" value="sunday" />
+                      <span>Sunday</span>
+                    </label>
+                    <div class="time-slots">
+                      <select class="time-from">
+                        <option value="8:00">8:00 AM</option>
+                        <option value="9:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="18:00">6:00 PM</option>
+                      </select>
+                      <span>to</span>
+                      <select class="time-to">
+                        <option value="9:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="18:00">6:00 PM</option>
+                        <option value="19:00">7:00 PM</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="service-location">Service Location</label>
+                  <select id="service-location" required>
+                    <option value="" disabled selected>
+                      Select where you provide your service
+                    </option>
+                    <option value="on-campus">On Campus Only</option>
+                    <option value="off-campus">Off Campus Only</option>
+                    <option value="both">Both On and Off Campus</option>
+                    <option value="online">Online/Remote Only</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Provider Details -->
+              <div class="form-section">
+                <h2>Provider Details</h2>
+                <p class="section-intro">
+                  Tell us more about your qualifications and experience.
+                </p>
+
+                <div class="form-group">
+                  <label for="provider-bio">About You</label>
+                  <textarea
+                    id="provider-bio"
+                    rows="3"
+                    required
+                    placeholder="Tell customers why you're qualified to provide this service"
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="provider-experience">Experience Level</label>
+                  <select id="provider-experience" required>
+                    <option value="" disabled selected>
+                      Select your experience level
+                    </option>
+                    <option value="beginner">
+                      Beginner (Less than 1 year)
+                    </option>
+                    <option value="intermediate">
+                      Intermediate (1-3 years)
+                    </option>
+                    <option value="advanced">Advanced (3+ years)</option>
+                    <option value="expert">Expert (5+ years)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="provider-skills">Skills & Certifications</label>
+                  <input
+                    type="text"
+                    id="provider-skills"
+                    placeholder="E.g., Certified Tutor, Food Handler's Certificate"
+                  />
+                  <p class="help-text">Separate multiple skills with commas</p>
+                </div>
+              </div>
+
+              <!-- Terms and Submission -->
+              <div class="form-section">
+                <div class="form-group terms-group">
+                  <label class="checkbox-container">
+                    <input type="checkbox" required id="terms-checkbox" />
+                    <span class="checkmark"></span>
+                    <span class="terms-text">
+                      I agree to the
+                      <a href="terms.html">Terms of Service</a> and
+                      <a href="privacy.html">Privacy Policy</a>
+                    </span>
+                  </label>
+                </div>
+
+                <button type="submit" class="btn primary-btn">
+                  Submit Application
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-logo-small">
+          <div class="n-logo">N</div>
+        </div>
+        <div class="footer-content">
+          <div class="footer-logo">
+            <h2>Service Finder</h2>
+            <p>
+              Connecting student service providers with customers at the
+              National University of Lesotho.
+            </p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h3>Platform</h3>
+              <ul>
+                <li><a href="browse.html">Browse Services</a></li>
+                <li><a href="become-provider.html">Become a Provider</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Company</h3>
+              <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="careers.html">Careers</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Legal</h3>
+              <ul>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms of Service</a></li>
+                <li><a href="cookies.html">Cookie Policy</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Service Finder. All rights reserved.</p>
+          <div class="footer-bottom-links">
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

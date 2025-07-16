@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - NUL Student Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="services-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="dashboard.html">NUL Marketplace</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="orders.html">My Orders</a></li>
+                    <li><a href="messages.html">Messages</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search services...">
+                </div>
+            </div>
+            <div class="user-actions">
+                <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i></a>
+                <a href="#" class="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></a>
+                <div class="user-menu">
+                    <div class="user-avatar">
+                        <img src="/placeholder.svg?height=32&width=32" alt="User Avatar">
+                    </div>
+                    <span class="username">John Doe</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Services Hero Section -->
+        <section class="services-hero">
+            <div class="container">
+                <div class="services-hero-content">
+                    <h1>Explore Services</h1>
+                    <p>Find everything you need within the NUL campus community</p>
+                </div>
+                <div class="services-filters">
+                    <div class="filter-group">
+                        <label for="category-filter">Category</label>
+                        <select id="category-filter">
+                            <option value="all">All Categories</option>
+                            <option value="academic">Academic</option>
+                            <option value="food">Food & Drinks</option>
+                            <option value="personal">Personal Care</option>
+                            <option value="tech">Technology</option>
+                            <option value="events">Events</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="sort-filter">Sort By</label>
+                        <select id="sort-filter">
+                            <option value="popular">Most Popular</option>
+                            <option value="recent">Recently Added</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="rating">Highest Rated</option>
+                        </select>
+                    </div>
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
+                        <button class="view-btn" data-view="list"><i class="fas fa-list"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Services Section -->
+        <section class="featured-services">
+            <div class="container">
+                <h2>Featured Services</h2>
+                <div class="services-carousel">
+                    <div class="service-card featured">
+                        <div class="service-image">
+                            <img src="/placeholder.svg?height=200&width=300" alt="Tutoring Service">
+                            <div class="service-badge">Popular</div>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-provider">
+                                <img src="/placeholder.svg?height=30&width=30" alt="Provider Avatar">
+                                <span>Math Wizards</span>
+                            </div>
+                            <h3>Advanced Calculus Tutoring</h3>
+                            <div class="service-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span>4.5 (28 reviews)</span>
+                            </div>
+                            <p class="service-description">Expert tutoring for all calculus courses. Individual or group sessions available.</p>
+                            <div class="service-meta">
+                                <div class="service-price">From M50/hr</div>
+                                <a href="service-details.html" class="service-link">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-card featured">
+                        <div class="service-image">
+                            <img src="/placeholder.svg?height=200&width=300" alt="Coffee Delivery">
+                            <div class="service-badge">New</div>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-provider">
+                                <img src="/placeholder.svg?height=30&width=30" alt="Provider Avatar">
+                                <span>Campus Brew</span>
+                            </div>
+                            <h3>Coffee Delivery Service</h3>
+                            <div class="service-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span>4.0 (15 reviews)</span>
+                            </div>
+                            <p class="service-description">Fresh coffee delivered to your dorm or classroom. Order ahead for busy mornings!</p>
+                            <div class="service-meta">
+                                <div class="service-price">From M15</div>
+                                <a href="service-details.html" class="service-link">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-card featured">
+                        <div class="service-image">
+                            <img src="/placeholder.svg?height=200&width=300" alt="Printing Service">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-provider">
+                                <img src="/placeholder.svg?height=30&width=30" alt="Provider Avatar">
+                                <span>Quick Print</span>
+                            </div>
+                            <h3>Express Printing & Binding</h3>
+                            <div class="service-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span>5.0 (42 reviews)</span>
+                            </div>
+                            <p class="service-description">Fast and reliable printing service with free delivery for orders over M50.</p>
+                            <div class="service-meta">
+                                <div class="service-price">From M2/page</div>
+                                <a href="service-details.html" class="service-link">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-control prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="carousel-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button class="carousel-control next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- All Services Section -->
+        <section class="all-services">
+            <div class="container">
+                <h2>All Services</h2>
+                <div class="services-grid">
+                    <!-- Academic Services -->
+                    <div class="service-category-card">
+                        <div class="category-icon academic">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Tutoring</h3>
+                        <p>24 listings</p>
+                        <ul class="category-services">
+                            <li>Math & Statistics</li>
+                            <li>Physics & Chemistry</li>
+                            <li>Programming</li>
+                            <li>Essay Writing</li>
+                        </ul>
+                        <a href="category-details.html?category=tutoring" class="category-link">View All</a>
+                    </div>
+                    
+                    <div class="service-category-card">
+                        <div class="category-icon books">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3>Books & Notes</h3>
+                        <p>32 listings</p>
+                        <ul class="category-services">
+                            <li>Textbooks</li>
+                            <li>Study Notes</li>
+                            <li>Past Papers</li>
+                            <li>Research Materials</li>
+                        </ul>
+                        <a href="category-details.html?category=books" class="category-link">View All</a>
+                    </div>
+                    
+                    <!-- Food Services -->
+                    <div class="service-category-card">
+                        <div class="category-icon food">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>Food & Snacks</h3>
+                        <p>18 listings</p>
+                        <ul class="category-services">
+                            <li>Meal Delivery</li>
+                            <li>Baked Goods</li>
+                            <li>Healthy Snacks</li>
+                            <li>Special Occasions</li>
+                        </ul>
+                        <a href="category-details.html?category=food" class="category-link">View All</a>
+                    </div>
+                    
+                    <div class="service-category-card">
+                        <div class="category-icon coffee">
+                            <i class="fas fa-coffee"></i>
+                        </div>
+                        <h3>Coffee & Beverages</h3>
+                        <p>10 listings</p>
+                        <ul class="category-services">
+                            <li>Coffee Delivery</li>
+                            <li>Smoothies</li>
+                            <li>Tea Varieties</li>
+                            <li>Energy Drinks</li>
+                        </ul>
+                        <a href="category-details.html?category=coffee" class="category-link">View All</a>
+                    </div>
+                    
+                    <!-- Tech Services -->
+                    <div class="service-category-card">
+                        <div class="category-icon tech">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h3>Tech Support</h3>
+                        <p>9 listings</p>
+                        <ul class="category-services">
+                            <li>Computer Repair</li>
+                            <li>Software Installation</li>
+                            <li>Data Recovery</li>
+                            <li>Virus Removal</li>
+                        </ul>
+                        <a href="category-details.html?category=tech" class="category-link">View All</a>
+                    </div>
+                    
+                    <div class="service-category-card">
+                        <div class="category-icon printing">
+                            <i class="fas fa-print"></i>
+                        </div>
+                        <h3>Printing</h3>
+                        <p>15 listings</p>
+                        <ul class="category-services">
+                            <li>Document Printing</li>
+                            <li>Poster Printing</li>
+                            <li>Binding Services</li>
+                            <li>Lamination</li>
+                        </ul>
+                        <a href="category-details.html?category=printing" class="category-link">View All</a>
+                    </div>
+                    
+                    <!-- Personal Services -->
+                    <div class="service-category-card">
+                        <div class="category-icon beauty">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <h3>Hair & Beauty</h3>
+                        <p>14 listings</p>
+                        <ul class="category-services">
+                            <li>Haircuts & Styling</li>
+                            <li>Braiding</li>
+                            <li>Manicure & Pedicure</li>
+                            <li>Makeup Services</li>
+                        </ul>
+                        <a href="category-details.html?category=beauty" class="category-link">View All</a>
+                    </div>
+                    
+                    <div class="service-category-card">
+                        <div class="category-icon laundry">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <h3>Laundry Services</h3>
+                        <p>8 listings</p>
+                        <ul class="category-services">
+                            <li>Wash & Fold</li>
+                            <li>Ironing</li>
+                            <li>Dry Cleaning</li>
+                            <li>Stain Removal</li>
+                        </ul>
+                        <a href="category-details.html?category=laundry" class="category-link">View All</a>
+                    </div>
+                    
+                    <!-- Transportation -->
+                    <div class="service-category-card">
+                        <div class="category-icon transportation">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h3>Transportation</h3>
+                        <p>7 listings</p>
+                        <ul class="category-services">
+                            <li>Campus Rides</li>
+                            <li>Airport Transfers</li>
+                            <li>Weekend Trips</li>
+                            <li>Group Transport</li>
+                        </ul>
+                        <a href="category-details.html?category=transportation" class="category-link">View All</a>
+                    </div>
+                    
+                    <!-- Events -->
+                    <div class="service-category-card">
+                        <div class="category-icon events">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <h3>Events</h3>
+                        <p>12 listings</p>
+                        <ul class="category-services">
+                            <li>Event Planning</li>
+                            <li>Photography</li>
+                            <li>DJ Services</li>
+                            <li>Decoration</li>
+                        </ul>
+                        <a href="category-details.html?category=events" class="category-link">View All</a>
+                    </div>
+                    
+                    <!-- Fitness -->
+                    <div class="service-category-card">
+                        <div class="category-icon fitness">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <h3>Fitness & Wellness</h3>
+                        <p>6 listings</p>
+                        <ul class="category-services">
+                            <li>Personal Training</li>
+                            <li>Yoga Classes</li>
+                            <li>Nutrition Advice</li>
+                            <li>Group Workouts</li>
+                        </ul>
+                        <a href="category-details.html?category=fitness" class="category-link">View All</a>
+                    </div>
+                    
+                    <!-- Other Services -->
+                    <div class="service-category-card">
+                        <div class="category-icon other">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                        <h3>Other Services</h3>
+                        <p>20 listings</p>
+                        <ul class="category-services">
+                            <li>Room Cleaning</li>
+                            <li>Errands & Delivery</li>
+                            <li>Moving Help</li>
+                            <li>Tutoring</li>
+                        </ul>
+                        <a href="category-details.html?category=other" class="category-link">View All</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recently Added Section -->
+        <section class="recently-added">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Recently Added</h2>
+                    <a href="recent-services.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="recent-services">
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="/placeholder.svg?height=150&width=250" alt="Laundry Service">
+                            <div class="service-badge new">New</div>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-provider">
+                                <img src="/placeholder.svg?height=30&width=30" alt="Provider Avatar">
+                                <span>CleanFresh</span>
+                            </div>
+                            <h3>Express Laundry Service</h3>
+                            <div class="service-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span>4.0 (5 reviews)</span>
+                            </div>
+                            <div class="service-meta">
+                                <div class="service-price">From M30/load</div>
+                                <a href="service-details.html" class="service-link">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="/placeholder.svg?height=150&width=250" alt="Haircut Service">
+                            <div class="service-badge new">New</div>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-provider">
+                                <img src="/placeholder.svg?height=30&width=30" alt="Provider Avatar">
+                                <span>StyleCuts</span>
+                            </div>
+                            <h3>Professional Haircuts</h3>
+                            <div class="service-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span>4.5 (2 reviews)</span>
+                            </div>
+                            <div class="service-meta">
+                                <div class="service-price">From M50</div>
+                                <a href="service-details.html" class="service-link">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="/placeholder.svg?height=150&width=250" alt="Room Cleaning">
+                            <div class="service-badge new">New</div>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-provider">
+                                <img src="/placeholder.svg?height=30&width=30" alt="Provider Avatar">
+                                <span>SparkleClean</span>
+                            </div>
+                            <h3>Dorm Room Cleaning</h3>
+                            <div class="service-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span>4.0 (3 reviews)</span>
+                            </div>
+                            <div class="service-meta">
+                                <div class="service-price">From M60</div>
+                                <a href="service-details.html" class="service-link">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="/placeholder.svg?height=150&width=250" alt="Fitness Training">
+                            <div class="service-badge new">New</div>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-provider">
+                                <img src="/placeholder.svg?height=30&width=30" alt="Provider Avatar">
+                                <span>FitLife</span>
+                            </div>
+                            <h3>Personal Fitness Training</h3>
+                            <div class="service-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span>5.0 (1 review)</span>
+                            </div>
+                            <div class="service-meta">
+                                <div class="service-price">From M70/hr</div>
+                                <a href="service-details.html" class="service-link">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Become a Provider CTA -->
+        <section class="provider-cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Have a skill or service to offer?</h2>
+                    <p>Join our community of service providers and start earning today.</p>
+                    <a href="become-provider.html" class="btn primary-btn">Become a Provider</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo-small">
+                <div class="n-logo">N</div>
+            </div>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>NUL Marketplace</h2>
+                    <p>Connecting student service providers with customers at the National University of Lesotho.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Platform</h3>
+                        <ul>
+                            <li><a href="browse.html">Browse Services</a></li>
+                            <li><a href="become-provider.html">Become a Provider</a></li>
+                            <li><a href="pricing.html">Pricing</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="careers.html">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                            <li><a href="terms.html">Terms of Service</a></li>
+                            <li><a href="cookies.html">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NUL Student Marketplace. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="services.js"></script>
+</body>
+</html>

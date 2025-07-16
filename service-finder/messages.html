@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Messages - NUL Student Marketplace</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <script type="module" src="/firebase-config.js"></script>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <a href="dashboard.html">Service Finder</a>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="orders.html">My Orders</a></li>
+            <li><a href="messages.html" class="active">Messages</a></li>
+          </ul>
+        </nav>
+        <div class="search-container">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search services..." />
+          </div>
+        </div>
+        <div class="user-actions">
+          <a href="cart.html" class="cart-icon"
+            ><i class="fas fa-shopping-cart"></i
+          ></a>
+          <a href="#" class="theme-toggle" aria-label="Toggle theme"
+            ><i class="fas fa-moon"></i
+          ></a>
+          <div class="user-menu">
+            <div class="user-avatar">
+              <img
+                src="avatar1.jpg"
+                alt="User Avatar"
+              />
+            </div>
+            <span class="username">John Doe</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="messages-section">
+        <div class="container">
+          <div class="messages-container">
+            <!-- Conversations List -->
+            <div class="conversations-list">
+              <div class="conversations-header">
+                <h2>Conversations</h2>
+                <button class="new-message-btn">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <div class="conversations-search">
+                <input type="text" placeholder="Search conversations..." />
+                <i class="fas fa-search"></i>
+              </div>
+              <div class="conversations-items">
+                <!-- Conversation Item -->
+                <div class="conversation-item active">
+                  <div class="user-avatar">
+                    <img
+                      src="avatar3.jpg"
+                      alt="User avatar"
+                    />
+                    <span class="online-status"></span>
+                  </div>
+                  <div class="conversation-info">
+                    <h3>Math Wizards</h3>
+                    <p class="last-message">See you tomorrow at 2 PM!</p>
+                    <div class="message-meta">
+                      <span class="timestamp">2h ago</span>
+                      <span class="unread-count">2</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- More conversations... -->
+              </div>
+            </div>
+
+            <!-- Chat Window -->
+            <div class="chat-window">
+              <div class="chat-header">
+                <div class="chat-partner">
+                  <div class="user-avatar">
+                    <img
+                      src="/placeholder.svg?width=40&height=40"
+                      alt="User avatar"
+                    />
+                    <span class="online-status"></span>
+                  </div>
+                  <div class="partner-info">
+                    <h3>Math Wizards</h3>
+                    <p class="status">Online</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="chat-messages">
+                <!-- Message Bubble -->
+                <div class="message received">
+                  <div class="message-content">
+                    <p>
+                      Hi! Are you available for a calculus session tomorrow?
+                    </p>
+                  </div>
+                  <div class="message-time">14:32</div>
+                </div>
+
+                <div class="message sent">
+                  <div class="message-content">
+                    <p>Yes, I'm available at 2 PM</p>
+                  </div>
+                  <div class="message-time">14:35</div>
+                </div>
+              </div>
+
+              <div class="message-input">
+                <textarea placeholder="Type your message..."></textarea>
+                <button class="send-btn">
+                  <i class="fas fa-paper-plane"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-logo-small">
+          <div class="n-logo">N</div>
+        </div>
+        <div class="footer-content">
+          <div class="footer-logo">
+            <h2>Service Finder</h2>
+            <p>
+              Connecting student service providers with customers at the
+              National University of Lesotho.
+            </p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h3>Platform</h3>
+              <ul>
+                <li><a href="browse.html">Browse Services</a></li>
+                <li><a href="become-provider.html">Become a Provider</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Company</h3>
+              <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="careers.html">Careers</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Legal</h3>
+              <ul>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms of Service</a></li>
+                <li><a href="cookies.html">Cookie Policy</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Service Finder. All rights reserved.</p>
+          <div class="footer-bottom-links">
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ServiceConnect - Your one-stop platform for finding and booking local services">
+    <title>ServiceConnect - Premium Local Services Marketplace</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #0ea5e9;
+            --accent-color: #eab308;
+            --background-color: #f8fafc;
+            --text-color: #1e293b;
+            --gray-light: #e2e8f0;
+            --success-color: #22c55e;
+            --error-color: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+
+        /* Enhanced Navbar */
+        .navbar {
+            background-color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Enhanced Search Container */
+        .search-container {
+            max-width: 1200px;
+            margin: 100px auto 20px;
+            padding: 2rem;
+        }
+
+        .search-box-wrapper {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid var(--gray-light);
+            border-radius: 1rem;
+            font-size: 1.1rem;
+            transition: border-color 0.2s;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-color);
+        }
+
+        /* Enhanced Filters */
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            padding: 0.5rem 0;
+            scrollbar-width: none;
+        }
+
+        .filters::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-button {
+            background: white;
+            border: 1px solid var(--gray-light);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-button.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Enhanced Service Cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-provider {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        .provider-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .service-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .service-stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .service-price {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+
+        .form-input {
+            padding: 0.75rem;
+            border: 1px solid var(--gray-light);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 2000;
+        }
+
+        .toast.success {
+            background-color: var(--success-color);
+        }
+
+        .toast.error {
+            background-color: var(--error-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .search-container {
+                padding: 1rem;
+                margin-top: 80px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .service-card {
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--gray-light);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-handshake"></i>
+            ServiceConnect
+        </div>
+        <div class="nav-links">
+            <a href="#" class="nav-link">Browse Services</a>
+            <a href="#" class="nav-link">How it Works</a>
+            <a href="#" class="nav-link">Become a Provider</a>
+        </div>
+        <div class="auth-buttons">
+            <button class="btn btn-outline" onclick="showLoginModal()">Login</button>
+            <button class="btn btn-primary" onclick="showSignupModal()">Sign Up</button>
+        </div>
+    </nav>
+
+    <div class="search-container">
+        <div class="search-box-wrapper">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-box" placeholder="Search for services (e.g., Plumber, Electrician, Designer)">
+        </div>
+        
+        <div class="filters">
+            <button class="filter-button active"><i class="fas fa-globe"></i> All Services</button>
+            <button class="filter-button"><i class="fas fa-home"></i> Home Maintenance</button>
+            <button class="filter-button"><i class="fas fa-briefcase"></i> Professional Services</button>
+            <button class="filter-button"><i class="fas fa-heart"></i> Health & Wellness</button>
+            <button class="filter-button"><i class="fas fa-laptop-code"></i> Technology</button>
+            <button class="filter-button"><i class="fas fa-calendar"></i> Events</button>
+        </div>
+    </div>
+
+    <div class="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <div class="services-grid" id="servicesGrid"></div>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('bookingModal')">&times;</span>
+            <h2>Book Service</h2>
+            <form class="booking-form" id="bookingForm">
+                <div class="form-group">
+                    <label class="form-label">Date</label>
+                    <input type="date" class="form-input" required min="">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Time</label>
+                    <input type="time" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Additional Notes</label>
+                    <textarea class="form-input" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Enhanced sample data
+        const services = [
+            {
+                id: 1,
+                title: "Professional Plumbing Services",
+                provider: "John Smith",
+                providerImage: "/api/placeholder/24/24",
+                rating: 4.8,
+                reviews: 127,
+                completedJobs: 243,
+                response: "Under 1 hour",
+                price: "$75/hr",
+                image: "/api/placeholder/400/200",
+                category: "Home Maintenance"
+            },
+            {
+                id: 2,
+                title: "Expert Electrical Repairs",
+                provider: "Sarah Johnson",
+                providerImage: "/api/placeholder/24/24",
+                rating: 4.9,
+                reviews: 89,
+                completedJobs: 156,
+                response: "Under 30 mins",
+                price: "$85/hr",
+                image: "/api/placeholder/400/200",
+                category: "Home Maintenance"
+            },
+            {
+                id: 3,
+                title: "Premium Home Cleaning",
+                provider: "Clean Pro Team",
+                providerImage: "/api/placeholder/24/24",
+                rating: 4.7,
+                reviews: 156,
+                completedJobs: 312,
+                response: "Under 2 hours",
+                price: "$50/hr",
+                image: "/api/placeholder/400/200",
+                category: "Home Maintenance"
+            },
+            // Continue services array
+            {
+              id: 4,
+              title: "Web Development Services",
+              provider: "Tech Solutions Inc",
+              providerImage: "/api/placeholder/24/24",
+              rating: 4.9,
+              reviews: 78,
+              completedJobs: 134,
+              response: "Under 1 hour",
+              price: "$95/hr",
+              image: "/api/placeholder/400/200",
+              category: "Technology"
+          },
+          {
+              id: 5,
+              title: "Professional Photography",
+              provider: "Emma White",
+              providerImage: "/api/placeholder/24/24",
+              rating: 4.8,
+              reviews: 92,
+              completedJobs: 167,
+              response: "Under 3 hours",
+              price: "$120/hr",
+              image: "/api/placeholder/400/200",
+              category: "Events"
+          }
+      ];
+
+      // Function to render service cards with enhanced UI
+      function renderServices(servicesArray) {
+          const servicesGrid = document.getElementById('servicesGrid');
+          servicesGrid.innerHTML = '';
+
+          if (servicesArray.length === 0) {
+              servicesGrid.innerHTML = `
+                  <div style="text-align: center; grid-column: 1/-1; padding: 2rem;">
+                      <i class="fas fa-search" style="font-size: 3rem; color: var(--gray-light);"></i>
+                      <p style="margin-top: 1rem;">No services found matching your criteria</p>
+                  </div>
+              `;
+              return;
+          }
+
+          servicesArray.forEach(service => {
+              const serviceCard = document.createElement('div');
+              serviceCard.className = 'service-card';
+              serviceCard.innerHTML = `
+                  <img src="${service.image}" alt="${service.title}" class="service-image">
+                  <div class="service-content">
+                      <div class="service-header">
+                          <div>
+                              <h3 class="service-title">${service.title}</h3>
+                              <div class="service-provider">
+                                  <img src="${service.providerImage}" alt="${service.provider}" class="provider-avatar">
+                                  <span>${service.provider}</span>
+                              </div>
+                          </div>
+                          <button class="btn btn-outline" onclick="toggleFavorite(this)">
+                              <i class="far fa-heart"></i>
+                          </button>
+                      </div>
+                      
+                      <div class="service-stats">
+                          <div class="service-rating">
+                              <i class="fas fa-star"></i>
+                              <span>${service.rating}</span>
+                              <span>(${service.reviews})</span>
+                          </div>
+                          <div class="stat">
+                              <i class="fas fa-check-circle"></i>
+                              <span>${service.completedJobs} jobs</span>
+                          </div>
+                          <div class="stat">
+                              <i class="fas fa-clock"></i>
+                              <span>${service.response}</span>
+                          </div>
+                      </div>
+                      
+                      <div class="service-price">${service.price}</div>
+                      
+                      <div class="service-actions">
+                          <button class="btn btn-primary" onclick="bookService(${service.id})">
+                              Book Now
+                          </button>
+                          <button class="btn btn-outline" onclick="contactProvider(${service.id})">
+                              Contact
+                          </button>
+                      </div>
+                  </div>
+              `;
+              servicesGrid.appendChild(serviceCard);
+          });
+      }
+
+      // Enhanced search functionality with debounce
+      function debounce(func, wait) {
+          let timeout;
+          return function executedFunction(...args) {
+              const later = () => {
+                  clearTimeout(timeout);
+                  func(...args);
+              };
+              clearTimeout(timeout);
+              timeout = setTimeout(later, wait);
+          };
+      }
+
+      const searchBox = document.querySelector('.search-box');
+      const handleSearch = debounce((searchTerm) => {
+          showLoading(true);
+          setTimeout(() => {
+              const filteredServices = services.filter(service => 
+                  service.title.toLowerCase().includes(searchTerm) ||
+                  service.provider.toLowerCase().includes(searchTerm) ||
+                  service.category.toLowerCase().includes(searchTerm)
+              );
+              renderServices(filteredServices);
+              showLoading(false);
+          }, 500); // Simulated delay
+      }, 300);
+
+      searchBox.addEventListener('input', (e) => {
+          const searchTerm = e.target.value.toLowerCase();
+          handleSearch(searchTerm);
+      });
+
+      // Enhanced filter functionality
+      const filterButtons = document.querySelectorAll('.filter-button');
+      filterButtons.forEach(button => {
+          button.addEventListener('click', () => {
+              filterButtons.forEach(btn => btn.classList.remove('active'));
+              button.classList.add('active');
+              
+              showLoading(true);
+              setTimeout(() => {
+                  const category = button.textContent.trim();
+                  const filteredServices = category === 'All Services' 
+                      ? services
+                      : services.filter(service => service.category === category);
+                  renderServices(filteredServices);
+                  showLoading(false);
+              }, 500); // Simulated delay
+          });
+      });
+
+      // Loading animation
+      function showLoading(show) {
+          const loading = document.querySelector('.loading');
+          const servicesGrid = document.getElementById('servicesGrid');
+          loading.style.display = show ? 'flex' : 'none';
+          servicesGrid.style.opacity = show ? '0.5' : '1';
+      }
+
+      // Modal functionality
+      function showModal(modalId) {
+          const modal = document.getElementById(modalId);
+          modal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal(modalId) {
+          const modal = document.getElementById(modalId);
+          modal.style.display = 'none';
+          document.body.style.overflow = 'auto';
+      }
+
+      // Booking functionality
+      function bookService(serviceId) {
+          const service = services.find(s => s.id === serviceId);
+          if (!service) return;
+
+          // Set minimum date to today
+          const dateInput = document.querySelector('#bookingModal input[type="date"]');
+          const today = new Date().toISOString().split('T')[0];
+          dateInput.min = today;
+
+          showModal('bookingModal');
+      }
+
+      // Form submission
+      document.getElementById('bookingForm').addEventListener('submit', (e) => {
+          e.preventDefault();
+          closeModal('bookingModal');
+          showToast('Booking confirmed successfully!', 'success');
+      });
+
+      // Toast notification
+      function showToast(message, type = 'success') {
+          const toast = document.getElementById('toast');
+          toast.textContent = message;
+          toast.className = `toast ${type}`;
+          toast.style.opacity = '1';
+
+          setTimeout(() => {
+              toast.style.opacity = '0';
+          }, 3000);
+      }
+
+      // Favorite functionality
+      function toggleFavorite(button) {
+          const icon = button.querySelector('i');
+          if (icon.classList.contains('far')) {
+              icon.classList.replace('far', 'fas');
+              icon.style.color = '#ef4444';
+              showToast('Added to favorites');
+          } else {
+              icon.classList.replace('fas', 'far');
+              icon.style.color = '';
+              showToast('Removed from favorites');
+          }
+      }
+
+      // Contact provider functionality
+      function contactProvider(serviceId) {
+          const service = services.find(s => s.id === serviceId);
+          if (!service) return;
+          showToast(`Opening chat with ${service.provider}...`);
+          // In a real application, this would open a chat interface
+      }
+
+      // Authentication modals
+      function showLoginModal() {
+          // Implementation for login modal
+          showToast('Login functionality coming soon');
+      }
+
+      function showSignupModal() {
+          // Implementation for signup modal
+          showToast('Signup functionality coming soon');
+      }
+
+      // Initialize the application
+      document.addEventListener('DOMContentLoaded', () => {
+          renderServices(services);
+          
+          // Close modal when clicking outside
+          window.addEventListener('click', (e) => {
+              const modals = document.getElementsByClassName('modal');
+              Array.from(modals).forEach(modal => {
+                  if (e.target === modal) {
+                      closeModal(modal.id);
+                  }
+              });
+          });
+      });
+  </script>
+</body>
+</html>

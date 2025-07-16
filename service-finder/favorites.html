@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Favorites - NUL Student Marketplace</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <script type="module" src="/firebase-config.js"></script>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <a href="dashboard.html">Service Finder</a>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="orders.html">My Orders</a></li>
+            <li><a href="messages.html">Messages</a></li>
+          </ul>
+        </nav>
+        <div class="search-container">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search services..." />
+          </div>
+        </div>
+        <div class="user-actions">
+          <a href="cart.html" class="cart-icon"
+            ><i class="fas fa-shopping-cart"></i
+          ></a>
+          <a href="#" class="theme-toggle" aria-label="Toggle theme"
+            ><i class="fas fa-moon"></i
+          ></a>
+          <div class="user-menu">
+            <div class="user-avatar">
+              <img
+                src="/placeholder.svg?height=32&width=32"
+                alt="User Avatar"
+              />
+            </div>
+            <span class="username">John Doe</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="user-favorites">
+        <div class="container">
+          <h1 class="page-title">My Favorites</h1>
+
+          <div class="favorites-grid">
+            <div class="favorite-item">
+              <button class="remove-favorite">
+                <i class="fas fa-times"></i>
+              </button>
+              <img
+                src="/placeholder.svg?width=300&height=200"
+                alt="Service image"
+              />
+              <div class="favorite-info">
+                <h3>Advanced Calculus Tutoring</h3>
+                <div class="rating">4.5 ★★★★☆ (28)</div>
+                <div class="price">From M50/hr</div>
+                <button class="btn primary-btn">View Service</button>
+              </div>
+            </div>
+
+            <div class="favorite-item">
+              <button class="remove-favorite">
+                <i class="fas fa-times"></i>
+              </button>
+              <img
+                src="/placeholder.svg?width=300&height=200"
+                alt="Service image"
+              />
+              <div class="favorite-info">
+                <h3>Express Laundry Service</h3>
+                <div class="rating">4.0 ★★★★☆ (15)</div>
+                <div class="price">M30/load</div>
+                <button class="btn primary-btn">View Service</button>
+              </div>
+            </div>
+
+            <!-- Empty state -->
+            <div class="empty-favorites" style="display: none">
+              <i class="fas fa-heart"></i>
+              <h3>No favorites yet</h3>
+              <p>
+                Start saving your favorite services by clicking the heart icon
+              </p>
+              <a href="browse.html" class="btn primary-btn">Browse Services</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-logo-small">
+          <div class="n-logo">N</div>
+        </div>
+        <div class="footer-content">
+          <div class="footer-logo">
+            <h2>Service Finder</h2>
+            <p>
+              Connecting student service providers with customers at the
+              National University of Lesotho.
+            </p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h3>Platform</h3>
+              <ul>
+                <li><a href="browse.html">Browse Services</a></li>
+                <li><a href="become-provider.html">Become a Provider</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Company</h3>
+              <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="careers.html">Careers</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Legal</h3>
+              <ul>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms of Service</a></li>
+                <li><a href="cookies.html">Cookie Policy</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Service Finder. All rights reserved.</p>
+          <div class="footer-bottom-links">
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
